@@ -1,0 +1,34 @@
+{
+  "name": "@mszu/pixi-ssr-shim",
+  "version": "0.0.1",
+  "description": "A shim that allows PixiJS to be imported (but not run) in a server-side-rendering context",
+  "author": "Mark Szumowski",
+  "license": "MIT",
+  "homepage": "https://github.com/mszu/pixi-ssr-shim",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mszu/pixi-ssr-shim.git"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "index.d.ts",
+  "files": [
+    "*.d.ts",
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "tsc && mv dist/index.d.ts ./ && cp dist/index.js dist/index.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^16.9.6",
+    "typescript": "^4.4.3"
+  }
+}
