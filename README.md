@@ -1,5 +1,7 @@
 # @mszu/pixi-ssr-shim
 
+![Screenshot showing SvelteKit app with PixiJS](https://raw.githubusercontent.com/mszu/svelte-kit-pixi-sample/main/docs/screenshot.png "SvelteKit + PixiJS")
+
 ## What is this?
 
 A basic shim that stubs out enough browser context (`window`, `document`, etc.)
