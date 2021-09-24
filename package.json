@@ -1,6 +1,6 @@
 {
   "name": "@mszu/pixi-ssr-shim",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A shim that allows PixiJS to be imported (but not run) in a server-side-rendering context",
   "author": "Mark Szumowski",
   "license": "MIT",
@@ -25,7 +25,10 @@
   },
   "scripts": {
     "clean": "rm -rf ./dist",
-    "build": "tsc && mv dist/index.d.ts ./ && cp dist/index.js dist/index.mjs"
+    "build": "mkdir -p dist && npm run build:cjs && npm run build:mjs && npm run build:typings",
+    "build:mjs": "tsc --rootDir src --outDir build/mjs --allowSyntheticDefaultImports --module esnext src/*.ts && mv build/mjs/index.js dist/index.mjs",
+    "build:cjs": "tsc --rootDir src --outDir build/cjs --esModuleInterop src/*.ts && mv build/cjs/index.js dist/index.js",
+    "build:typings": "tsc --declaration --emitDeclarationOnly --outDir . src/*.ts"
   },
   "devDependencies": {
     "@types/node": "^16.9.6",
