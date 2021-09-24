@@ -1,6 +1,7 @@
 # @mszu/pixi-ssr-shim
 
 ## What is this?
+
 A basic shim that stubs out enough browser context (`window`, `document`, etc.)
 to allow the [PixiJS library](https://pixijs.com/) to be imported in Node without
 errors.
@@ -9,18 +10,23 @@ errors.
 server), just to import it.**
 
 ## Why would I want this?
+
 You're trying to use PixiJS with a framework like [SvelteKit](https://kit.svelte.dev/)
 that does server-side rendering, but you're getting errors like
 `ReferenceError: self is not defined` during the build or starting the preview server.
 
 ## How do I use this?
+
+> See [https://github.com/mszu/svelte-kit-pixi-sample](https://github.com/mszu/svelte-kit-pixi-sample) for a complete example.
+
 1. Add this library as a dependency (`npm i @mszu/pixi-ssr-shim`)
 2. Import it before your first Pixi import
+
 ```javascript
 // Sample SvelteKit script block
 //
 <script>
-  import '@mszu/pixi-ssr-shim'; // <------------------------------- IMPORTANT
+  import '@mszu/pixi-ssr-shim'; // <----------------- IMPORTANT
   import { Application, Sprite, Texture } from 'pixi.js';
   import { onMount } from 'svelte';
   
@@ -47,6 +53,7 @@ that does server-side rendering, but you're getting errors like
 ```
 
 ## Important Notes
+
 This is kind of a hacky work-around since it depends on the framework (like SvelteKit)
 generating output code which imports the shim before `pixi.js` or any of the `@pixi/...`
 modules. Putting it before the Pixi imports in your own code is important, but even then

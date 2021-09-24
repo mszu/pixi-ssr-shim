@@ -1,6 +1,6 @@
 {
   "name": "@mszu/pixi-ssr-shim",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A shim that allows PixiJS to be imported (but not run) in a server-side-rendering context",
   "author": "Mark Szumowski",
   "license": "MIT",
