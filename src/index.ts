@@ -23,6 +23,8 @@ if (typeof document === 'undefined') {
                     case '2d':
                       return {
                         fillRect: () => {},
+                        drawImage: () => {},
+                        getImageData: () => {},
                       };
                   }
                 },
