@@ -33,6 +33,8 @@ if (typeof document === 'undefined') {
         },
     } as any;
   }
+if (typeof CanvasRenderingContext2D === 'undefined') {
+    globalThis.CanvasRenderingContext2D = { prototype: {} };
 }
 
 export {};
