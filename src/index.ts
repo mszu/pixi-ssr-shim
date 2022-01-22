@@ -8,7 +8,7 @@ if (typeof document === 'undefined') {
   if (window.document) {
     globalThis.document = window.document;
   } else {
-    // @ts-expect-error - the actual browser `window.document` is read-only
+    // @ts-expect-error - window.document is read-only
     globalThis.document = window.document = {
       createElement: (elementName: string) => {
           switch (elementName) {
@@ -33,8 +33,11 @@ if (typeof document === 'undefined') {
         },
     } as any;
   }
+}
+
 if (typeof CanvasRenderingContext2D === 'undefined') {
-    globalThis.CanvasRenderingContext2D = { prototype: {} };
+  // @ts-expect-error - we're not providing many properties required by the type definitions here
+  globalThis.CanvasRenderingContext2D = { prototype: {} };
 }
 
 export {};
